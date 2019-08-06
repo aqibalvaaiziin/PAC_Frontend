@@ -1,57 +1,59 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Section from '../../components/Section'
-import { Header, Step } from 'semantic-ui-react';
+import { Header, Step, Grid, Icon } from 'semantic-ui-react';
+import Axios from 'axios';
+import Zoom from 'react-reveal/Zoom';
 
 function Timelines() {
 
-  const stepContents = [
-    {
-      icon: 'list alternate outline',
-      title: 'Pendaftaran',
-      description: '1 September 2018 - 30 September 2018',
-    },
-    {
-      icon: 'edit',
-      title: 'Babak Penyisihan',
-      description: 'Babak penyisihan tahap 1 akan di umumkan tanggal 2 Oktober 2018'
-    },
-    {
-      icon: 'announcement',
-      title: 'Pengumuman Babak Penyisihan',
-      description: 'Pengumuman babak penyisihan tahap 1 akan di umumkan tanggal 2 Oktober 2018'
-    },
-    {
-      icon: 'archive',
-      title: 'Pengumpulan Video Demo Aplikasi',
-      description: 'Pengumpulan paling lambat tanggal 22 Oktober 2018'
-    },
-    {
-      icon: 'announcement',
-      title: 'Pengumuman Finalis',
-      description: 'Pengumuman peserta yang lolos ke babak final akan di umumkan tanggal 24 Oktober 2018'
-    },
-    {
-      icon: 'flag',
-      title: 'Final',
-      description: 'Final lomba Polinema Mobile Apps And Game Competition tanggal 27 Oktober 2018'
-    },
+  const [timelines, setTimelines] = useState([])
 
-  ]
+  useEffect(() => {
+    Axios.get('https://sistempac.herokuapp.com/timeline')
+      .then(res => setTimelines(res.data))
+  })
 
   return (
     <Section bgImage={require('./adults-coffee-colleagues-1323592.jpg')} strength={200}>
-      <Header as='h1' style={styles.contentColor}>Timeline</Header>
-      <Step.Group vertical fluid>
-        {
-          stepContents.map(content => (
-            <Step link
-              icon={content.icon}
-              title={content.title}
-              description={content.description}
-            />
-          ))
-        }
-      </Step.Group>
+      <Zoom>
+        <Header as='h1' style={styles.contentColor}>Timeline</Header>
+        <Grid columns={2}>
+          <Grid.Row>
+            <Grid.Column>
+              <Icon name="calendar outline" style={styles.timeIcon} />
+              <Icon name="clock outline" style={styles.timeIcon} />
+            </Grid.Column>
+            <Grid.Column>
+              <Step.Group vertical fluid>
+                {
+                  timelines.map(timeline => {
+
+                    const startDateTime = new Date(timeline.tgl_mulai)
+                    const startDate = startDateTime.getDate()
+                    const startMonth = startDateTime.getMonth() + 1
+                    const StartYear = startDateTime.getFullYear()
+
+                    const endDateTime = new Date(timeline.tgl_selesai)
+                    const endDate = endDateTime.getDate()
+                    const endMonth = endDateTime.getMonth() + 1
+                    const endYear = endDateTime.getFullYear()
+
+                    return (
+                      <Step link>
+                        <Step.Title>{timeline.nama}</Step.Title>
+                        <Step.Description>{timeline.deskripsi}</Step.Description>
+                        <Step.Description> Mulai &nbsp;&nbsp;&nbsp; : {`${startDate}-${startMonth}-${StartYear}`}</Step.Description>
+                        <Step.Description> Selesai &nbsp;: {`${endDate}-${endMonth}-${endYear}`}</Step.Description>
+                      </Step>
+                    )
+                  })
+                }
+              </Step.Group>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+      </Zoom>
+
     </Section>
   )
 }
@@ -60,6 +62,14 @@ export default Timelines
 
 const styles = {
   contentColor: {
-    color: '#fff'
+    color: '#fff',
+    fontSize: '40px',
+    marginLeft: '180px',
+    marginBottom: '20px'
+  },
+  timeIcon: {
+    marginTop: '310px',
+    color: '#fff',
+    fontSize: '200px'
   }
 }

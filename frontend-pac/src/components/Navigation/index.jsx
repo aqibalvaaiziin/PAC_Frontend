@@ -42,22 +42,22 @@ function Navigation(props) {
 
 
   return (
-    <Grid columns="1">
-      <Grid.Column only="computer">
-        <TransparentMenu
+      <Grid columns="1">
+        <Grid.Column only="computer">
+          <TransparentMenu
 
-          size="massive"
-          borderless
-          fixed="top"
-          inverted
-          transparent={isMenuTransparent}
-          stackable>
-          <Menu.Menu position='right' style={styles.navPosition}>
-            {renderMenu()}
-          </Menu.Menu>
-        </TransparentMenu>
-      </Grid.Column>
-    </Grid>
+            size="massive"
+            borderless
+            fixed="top"
+            inverted
+            transparent={isMenuTransparent}
+            stackable>
+            <Menu.Menu position='right' style={styles.navPosition}>
+              {renderMenu()}
+            </Menu.Menu>
+          </TransparentMenu>
+        </Grid.Column>
+      </Grid>
   )
 }
 
@@ -72,8 +72,8 @@ const TransparentMenu = styled(Menu)`
   transition: all 0.5s;
 `
 
-const styles={
-  navPosition:{
-    marginRight:'50px'
+const styles = {
+  navPosition: {
+    marginRight: '50px'
   }
 }

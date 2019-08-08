@@ -19,35 +19,37 @@ function Support() {
   return (
     <div style={styles.bg}>
       <Container style={styles.marginContent}>
-        <Zoom>
-          <Grid columns={2} divided>
-            <Grid.Row>
-
+        <Grid columns={2} divided textAlign='center'>
+          <Grid.Row>
+            <Zoom right>
               <Grid.Column textAlign='center'>
-                <Header as='h1' content='Media Partner' />
+                <Header as='h1' content='Media Partner' textAlign='center' />
                 <br />
                 {
                   mediaPartner.map(media => (
-                    <img src={media.logo} alt="logo" style={styles.imageContent} />
+                    <img src={media.logo} alt="logo" style={styles.supportContent} />
                   ))
                 }
+                <br/><br/>
+                <hr />
               </Grid.Column>
-
+            </Zoom>
+          </Grid.Row>
+          <br /> <br/> <br/>
+          <Grid.Row>
+            <Zoom>
               <Grid.Column textAlign='center'>
-                <Header as='h1' content='Supported By' />
-                <br />
+                <Header as='h1' content='Supported By' textAlign='center' />
                 {
                   supportedBy.map(support => (
-                    <img src={support.logo} alt="logo" style={styles.imageContent} />
+                    <img src={support.logo} alt="logo" style={styles.mediaContent} />
                   ))
                 }
               </Grid.Column>
-
-            </Grid.Row>
-          </Grid>
-          <br/>
-          <hr />
-        </Zoom>
+            </Zoom>
+          </Grid.Row>
+        </Grid>
+        <hr />
       </Container>
     </div>
   )
@@ -63,12 +65,18 @@ const styles = {
     color: '#fff',
     fontSize: '35px',
   },
-  imageContent: {
+  supportContent: {
     width: '200px',
-    height: '200px'
+    height: '150px'
   },
-  marginContent:{
-    marginTop:'100px',
-    marginBottom:'100px',
+  mediaContent: {
+    width: '450px',
+    height: '270px',
+    marginTop:'-55px',
+    marginBottom:'-40px',
+  },
+  marginContent: {
+    marginTop: '50px',
+    marginBottom: '50px',
   }
 }

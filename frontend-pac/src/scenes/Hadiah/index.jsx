@@ -1,46 +1,21 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Card, Container, Grid, GridColumn, Header, List, Icon } from 'semantic-ui-react';
 import Zoom from 'react-reveal/Zoom';
+import Axios from 'axios';
 function Hadiah() {
 
-  const rankings = [
-    {
-      rank: 'Juara I',
-      value: 'Rp.3.500.000',
-      desc: 'Setiap pemenang juara I lomba Polinema Mobile Apps And Game Competition akan mendapatkan'
-    },
-    {
-      rank: 'Juara II',
-      value: 'Rp.3.000.000',
-      desc: 'Setiap pemenang juara II lomba Polinema Mobile Apps And Game Competition akan mendapatkan'
-    },
-    {
-      rank: 'Juara III',
-      value: 'Rp.2.500.000',
-      desc: 'Setiap pemenang juara III lomba Polinema Mobile Apps And Game Competition akan mendapatkan'
-    },
-  ]
+  const [hadiah, setHadiah] = useState([])
 
-  const contenders = [
-    {
-      rank: 'Juara Harapan 1',
-      value: 'Rp.1.000.000'
-    },
-    {
-      rank: 'Juara Harapan 2',
-      value: 'Rp.1.000.000'
-    },
-    {
-      rank: 'Juara Harapan 3',
-      value: 'Rp.1.000.000'
-    },
-  ]
+  useEffect(() => {
+    Axios.get('https://sistempac.herokuapp.com/hadiah')
+      .then(res => setHadiah(res.data))
+  })
 
   return (
     <div style={styles.bgColor}>
       <Container>
         <Zoom>
-          <br /><br/>
+          <br /><br />
           <Header as='h2' icon textAlign='center'>
             <Icon name='gift' />
             <Header.Content>Hadiah</Header.Content>
@@ -49,27 +24,21 @@ function Hadiah() {
           <Grid columns={3} >
             <Grid.Row>
               {
-                rankings.map(ranking => (
+                hadiah.map(ranking => (
                   <GridColumn style={styles.rankPosition}>
 
                     <Card color='black'>
 
                       <Card.Content textAlign='center' style={styles.headerColor}>
                         <Card.Header style={styles.textColor}>
-                          {ranking.rank}
+                          {ranking.judul}
                         </Card.Header>
                       </Card.Content>
 
                       <Card.Content textAlign='center'>
                         <Card.Header>
-                          {ranking.value}
+                          Rp.{ranking.nominal}
                         </Card.Header>
-                      </Card.Content>
-
-                      <Card.Content textAlign='center'>
-                        <Card.Meta>
-                          {ranking.desc}
-                        </Card.Meta>
                       </Card.Content>
 
                       <Card.Content textAlign='center'>
@@ -86,29 +55,10 @@ function Hadiah() {
             </Grid.Row>
 
           </Grid>
-          <Header as='h1' textAlign='center' style={styles.contentPosition}>Juara Harapan</Header>
-
-          <Grid>
-            <Grid.Row>
-              <Grid.Column>
-                <List divided relaxed>
-                  {
-                    contenders.map(contender => (
-                      <List.Item>
-                        <List.Icon name='trophy' size='large' verticalAlign='middle' />
-                        <List.Content>
-                          <List.Header>{contender.rank}</List.Header>
-                          <List.Description>{contender.value}</List.Description>
-                        </List.Content>
-                      </List.Item>
-                    ))
-                  }
-                </List>
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
+          <br/>
+          <br/>
           <Header as='h3' textAlign='center' style={styles.contentBottom}>**Hadiah Dipotong Pajak</Header>
-          <br /><br/>
+          <br /><br />
         </Zoom>
       </Container>
     </div>
@@ -123,6 +73,7 @@ const styles = {
     position: 'relative',
     left: '27.2%',
     transform: 'translateX(-27.2%)',
+    marginTop:'20px'
   },
   contentPosition: {
     marginTop: '50px'

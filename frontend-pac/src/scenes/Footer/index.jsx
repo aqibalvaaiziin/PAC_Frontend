@@ -7,7 +7,7 @@ function Footer() {
       <br />
       <br />
       <Container textAlign='center'>
-        <Header as='h4' content='Copyright © 2018. All rights reserved. ' style={styles.textColor} />
+        <Header as='h4' content='Copyright © 2019. All rights reserved. ' style={styles.textColor} />
       </Container>
       <br /><br />
     </div>

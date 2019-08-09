@@ -15,7 +15,7 @@ function Home() {
                 <img src="http://pac.polinema.ac.id/img/phone.png" alt="" style={styles.image} />
               </Grid.Column>
               <Grid.Column style={styles.secondGrid}>
-                <Header size='huge' style={styles.headerText}>Polinema Mobile Apps And Game Competition</Header>
+                <Header size='huge' style={styles.headerText}>Polinema Mobile Apps Competition</Header>
                 <p style={styles.ContentText}>PAC diselenggarakan oleh Jurusan Teknologi Informasi Politeknik Negeri Malang, sebagai wadah berkompetisi bagi
                 developer muda yang ingin berkreasi pada bidang pembuatan Aplikasi Mobile.</p>
                 <div style={styles.buttonPosition}>

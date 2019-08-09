@@ -27,7 +27,7 @@ function Support() {
                 <br />
                 {
                   mediaPartner.map(media => (
-                    <img src={media.logo} alt="logo" style={styles.supportContent} />
+                    <img src={media.logo} alt="logo" style={styles.supportContent} key={media._id} />
                   ))
                 }
                 <br/><br/>
@@ -42,7 +42,7 @@ function Support() {
                 <Header as='h1' content='Supported By' textAlign='center' />
                 {
                   supportedBy.map(support => (
-                    <img src={support.logo} alt="logo" style={styles.mediaContent} />
+                    <img src={support.logo} alt="logo" style={styles.mediaContent} key={support._id} />
                   ))
                 }
               </Grid.Column>

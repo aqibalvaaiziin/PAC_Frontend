@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Card, Container, Grid, GridColumn, Header, List, Icon } from 'semantic-ui-react';
+import { Card, Container, Grid, GridColumn, Header, Icon } from 'semantic-ui-react';
 import Zoom from 'react-reveal/Zoom';
 import Axios from 'axios';
 function Hadiah() {
@@ -21,11 +21,11 @@ function Hadiah() {
             <Header.Content>Hadiah</Header.Content>
           </Header>
           <br />
-          <Grid columns={3} >
+          <Grid columns={3}>
             <Grid.Row>
               {
                 hadiah.map(ranking => (
-                  <GridColumn style={styles.rankPosition}>
+                  <GridColumn style={styles.rankPosition} key={ranking._id}>
 
                     <Card color='black'>
 

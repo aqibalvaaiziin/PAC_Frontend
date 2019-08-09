@@ -45,7 +45,6 @@ function Navigation(props) {
       <Grid columns="1">
         <Grid.Column only="computer">
           <TransparentMenu
-
             size="massive"
             borderless
             fixed="top"

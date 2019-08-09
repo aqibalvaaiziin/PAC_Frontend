@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Section from '../../components/Section'
-import { Header, Step, Grid, Icon } from 'semantic-ui-react';
+import { Header, Step, Icon } from 'semantic-ui-react';
 import Axios from 'axios';
 import Zoom from 'react-reveal/Zoom';
 
@@ -11,47 +11,45 @@ function Timelines() {
   useEffect(() => {
     Axios.get('https://sistempac.herokuapp.com/timeline')
       .then(res => setTimelines(res.data))
+
   })
 
   return (
     <Section bgImage={require('./adults-coffee-colleagues-1323592.jpg')} strength={200}>
       <Zoom>
-        <Header as='h1' style={styles.contentColor}>Timeline</Header>
-        <Grid columns={2}>
-          <Grid.Row>
-            <Grid.Column>
-              <Icon name="calendar outline" style={styles.timeIcon} />
-              <Icon name="clock outline" style={styles.timeIcon} />
-            </Grid.Column>
-            <Grid.Column>
-              <Step.Group vertical fluid>
-                {
-                  timelines.map(timeline => {
+        <Header as='h2' icon textAlign='center' style={styles.contentColor}>
+          <Icon name='calendar alternate outline' />
+          <Header.Content>Timeline</Header.Content>
+        </Header>
 
-                    const startDateTime = new Date(timeline.tgl_mulai)
-                    const startDate = startDateTime.getDate()
-                    const startMonth = startDateTime.getMonth() + 1
-                    const StartYear = startDateTime.getFullYear()
+        <Step.Group style={styles.timePosition} vertical>
+          {
+            timelines.map(timeline => {
 
-                    const endDateTime = new Date(timeline.tgl_selesai)
-                    const endDate = endDateTime.getDate()
-                    const endMonth = endDateTime.getMonth() + 1
-                    const endYear = endDateTime.getFullYear()
+              const startDateTime = new Date(timeline.tgl_mulai)
+              const startDate = startDateTime.getDate()
+              const startMonth = startDateTime.getMonth() + 1
+              const StartYear = startDateTime.getFullYear()
 
-                    return (
-                      <Step link>
-                        <Step.Title>{timeline.nama}</Step.Title>
-                        <Step.Description>{timeline.deskripsi}</Step.Description>
-                        <Step.Description> Mulai &nbsp;&nbsp;&nbsp; : {`${startDate}-${startMonth}-${StartYear}`}</Step.Description>
-                        <Step.Description> Selesai &nbsp;: {`${endDate}-${endMonth}-${endYear}`}</Step.Description>
-                      </Step>
-                    )
-                  })
-                }
-              </Step.Group>
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
+              const endDateTime = new Date(timeline.tgl_selesai)
+              const endDate = endDateTime.getDate()
+              const endMonth = endDateTime.getMonth() + 1
+              const endYear = endDateTime.getFullYear()
+
+              return (
+                <Step link key={timeline._id}>
+                  <Step.Content>
+                    <Step.Title>{timeline.nama}</Step.Title>
+                    <Step.Description>{timeline.deskripsi}</Step.Description>
+                    <Step.Description> Mulai &nbsp;&nbsp;&nbsp; : {`${startDate}-${startMonth}-${StartYear}`}</Step.Description>
+                    <Step.Description> Selesai &nbsp;: {`${endDate}-${endMonth}-${endYear}`}</Step.Description>
+                  </Step.Content>
+                </Step>
+              )
+            })
+          }
+        </Step.Group>
+
       </Zoom>
 
     </Section>
@@ -63,13 +61,12 @@ export default Timelines
 const styles = {
   contentColor: {
     color: '#fff',
-    fontSize: '40px',
-    marginLeft: '180px',
+    fontSize: '30px',
     marginBottom: '20px'
   },
-  timeIcon: {
-    marginTop: '310px',
-    color: '#fff',
-    fontSize: '200px'
+  timePosition: {
+    position: 'relative',
+    left: '50%',
+    transform: 'translateX(-50%)'
   }
 }

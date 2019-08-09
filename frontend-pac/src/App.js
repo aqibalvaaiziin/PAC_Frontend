@@ -10,9 +10,7 @@ function App() {
     'About',
     'Timelines',
     'Hadiah',
-    'Ketentuan',
-    'Daftar',
-    'TemplateProposal',
+    'Ketentuan'
   ]
 
   const scenes=[

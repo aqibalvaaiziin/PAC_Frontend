@@ -1,19 +1,23 @@
-import React from 'react';
-import './App.css';
+import React from 'react'
+import './App.css'
 import { Element } from 'react-scroll'
 import Navigation from './components/Navigation'
-import  { Daftar,Hadiah,Ketentuan,TemplateProposal,Timelines,Home, About, Support, Footer } from './scenes'
+import {
+  Daftar,
+  Hadiah,
+  Ketentuan,
+  TemplateProposal,
+  Timelines,
+  Home,
+  About,
+  Support,
+  Footer
+} from './scenes'
 
 function App() {
-  const menu = [
-    'Home',
-    'About',
-    'Timelines',
-    'Hadiah',
-    'Ketentuan'
-  ]
+  const menu = ['Beranda', 'Tentang', 'Timeline', 'Hadiah', 'Ketentuan']
 
-  const scenes=[
+  const scenes = [
     <Home />,
     <About />,
     <Timelines />,
@@ -25,8 +29,8 @@ function App() {
     <Footer />
   ]
 
-  function renderScenes(){
-    return scenes.map((scene,index) =>(
+  function renderScenes() {
+    return scenes.map((scene, index) => (
       <Element id={menu[index]} key={index}>
         {scene}
       </Element>
@@ -36,9 +40,9 @@ function App() {
   return (
     <>
       <Navigation menu={menu} />
-        {renderScenes()}
+      {renderScenes()}
     </>
-  );
+  )
 }
 
-export default App;
+export default App

@@ -15,7 +15,7 @@ function Support() {
     Axios.get('https://sistempac.herokuapp.com/mediapartner').then(res =>
       setMediaPartner(res.data)
     )
-  })
+  }, [])
 
   return (
     <Segment padded="very">

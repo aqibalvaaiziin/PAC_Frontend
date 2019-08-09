@@ -16,7 +16,7 @@ function Hadiah() {
     Axios.get('https://sistempac.herokuapp.com/hadiah').then(res =>
       setHadiah(res.data)
     )
-  })
+  }, [])
 
   return (
     <Segment padded="very">

@@ -11,7 +11,7 @@ function Timelines() {
     Axios.get('https://sistempac.herokuapp.com/timeline').then(res =>
       setTimelines(res.data)
     )
-  })
+  }, [])
 
   return (
     <Section
@@ -43,10 +43,9 @@ function Timelines() {
                   <List.Description>{timeline.deskripsi}</List.Description>
 
                   {startDate === endDate ? (
-                    <Header
-                      size="small"
-                      inverted
-                    >{`${startDate}-${startMonth}-${StartYear}`}</Header>
+                    <Step.Group>
+                      <Step>{`${startDate}-${startMonth}-${StartYear}`}</Step>
+                    </Step.Group>
                   ) : (
                     <Step.Group>
                       <Step>

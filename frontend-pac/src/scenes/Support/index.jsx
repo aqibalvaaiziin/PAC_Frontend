@@ -27,7 +27,7 @@ function Support() {
                 <br />
                 {
                   mediaPartner.map(media => (
-                    <img src={media.logo} alt="logo" style={styles.supportContent} key={media._id} />
+                    <img src={media.logo} alt="logo" style={styles.mediaContent} key={media._id} />
                   ))
                 }
                 <br/><br/>
@@ -42,7 +42,7 @@ function Support() {
                 <Header as='h1' content='Supported By' textAlign='center' />
                 {
                   supportedBy.map(support => (
-                    <img src={support.logo} alt="logo" style={styles.mediaContent} key={support._id} />
+                    <img src={support.logo} alt="logo" style={styles.supportContent} key={support._id} />
                   ))
                 }
               </Grid.Column>
@@ -65,15 +65,17 @@ const styles = {
     color: '#fff',
     fontSize: '35px',
   },
-  supportContent: {
-    width: '200px',
-    height: '150px'
-  },
   mediaContent: {
-    width: '450px',
+    width: '200px',
+    height: '150px',
+    marginRight:'25px'
+  },
+  supportContent: {
+    width: '500px',
     height: '270px',
     marginTop:'-55px',
     marginBottom:'-40px',
+    marginRight:'15px'
   },
   marginContent: {
     marginTop: '50px',

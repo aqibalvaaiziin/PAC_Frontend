@@ -31,7 +31,13 @@ function Home() {
                   Aplikasi Mobile.
                 </p>
                 <div style={styles.buttonPosition}>
-                  <Button size="large" inverted content="DAFTAR" />
+                  <Button
+                    size="large"
+                    inverted
+                    content="DAFTAR"
+                    as="a"
+                    href="http://pac.polinema.ac.id/panel"
+                  />
                   <Button size="large" inverted content="TENTANG PAC" />
                 </div>
               </Grid.Column>

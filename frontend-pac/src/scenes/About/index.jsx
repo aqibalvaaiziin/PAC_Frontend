@@ -38,7 +38,7 @@ function About() {
                 </List.Item>
                 <List.Item>
                   Peserta adalah mahasiswa aktif Program Diploma atau Strata 1
-                  dengan umur maksimum 24 tahun pada bulan November 2018 ketika
+                  dengan umur maksimum 24 tahun pada bulan November 2019 ketika
                   PAC berlangsung.
                 </List.Item>
                 <List.Item>

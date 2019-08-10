@@ -22,16 +22,11 @@ function Support() {
       <Container>
         <Header size="large" content="Media Partner" textAlign="center" />
 
-        <Grid columns="5" verticalAlign="middle">
+        <Grid columns="5" verticalAlign="middle" doubling>
           {mediaPartner.map(media => (
-            <Grid.Column>
+            <Grid.Column key={media._id}>
               <Zoom right>
-                <Image
-                  src={media.logo}
-                  alt="logo"
-                  key={media._id}
-                  size="small"
-                />
+                <Image src={media.logo} alt="logo" size="small" />
               </Zoom>
             </Grid.Column>
           ))}
@@ -39,16 +34,11 @@ function Support() {
 
         <Header size="large" content="Supported By" textAlign="center" />
 
-        <Grid columns="5" textAlign="center">
+        <Grid columns="5" textAlign="center" doubling>
           {supportedBy.map(support => (
-            <Grid.Column>
+            <Grid.Column key={support._id}>
               <Zoom>
-                <Image
-                  src={support.logo}
-                  alt="logo"
-                  key={support._id}
-                  size="large"
-                />
+                <Image src={support.logo} alt="logo" size="large" />
               </Zoom>
             </Grid.Column>
           ))}

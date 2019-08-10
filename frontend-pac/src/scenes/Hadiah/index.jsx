@@ -1,12 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import {
-  Card,
-  Grid,
-  GridColumn,
-  Header,
-  Icon,
-  Segment
-} from 'semantic-ui-react'
+import { Card, Grid, Header, Icon, Segment } from 'semantic-ui-react'
 import Zoom from 'react-reveal/Zoom'
 import Axios from 'axios'
 function Hadiah() {
@@ -21,37 +14,35 @@ function Hadiah() {
   return (
     <Segment padded="very">
       <Zoom>
-        <Header as="h2" icon textAlign="center">
+        <Header size="large" icon textAlign="center">
           <Icon name="gift" />
           <Header.Content>Hadiah</Header.Content>
         </Header>
 
-        <Grid columns={3}>
-          <Grid.Row>
-            {hadiah.map(ranking => (
-              <GridColumn style={styles.rankPosition} key={ranking._id}>
-                <Card>
-                  <Card.Content textAlign="center" style={styles.headerColor}>
-                    <Card.Header style={styles.textColor}>
-                      {ranking.judul}
-                    </Card.Header>
-                  </Card.Content>
+        <Grid columns={3} stackable>
+          {hadiah.map(ranking => (
+            <Grid.Column key={ranking._id}>
+              <Card fluid>
+                <Card.Content textAlign="center" style={styles.headerColor}>
+                  <Card.Header style={styles.textColor}>
+                    {ranking.judul}
+                  </Card.Header>
+                </Card.Content>
 
-                  <Card.Content textAlign="center">
-                    <Card.Header>Rp.{ranking.nominal}</Card.Header>
-                  </Card.Content>
+                <Card.Content textAlign="center">
+                  <Card.Header>Rp.{ranking.nominal}</Card.Header>
+                </Card.Content>
 
-                  <Card.Content textAlign="center">
-                    <b>PIAGAM</b>
-                  </Card.Content>
+                <Card.Content textAlign="center">
+                  <b>PIAGAM</b>
+                </Card.Content>
 
-                  <Card.Content textAlign="center">
-                    <b>SERTIFIKAT</b>
-                  </Card.Content>
-                </Card>
-              </GridColumn>
-            ))}
-          </Grid.Row>
+                <Card.Content textAlign="center">
+                  <b>SERTIFIKAT</b>
+                </Card.Content>
+              </Card>
+            </Grid.Column>
+          ))}
         </Grid>
         <br />
         <br />
@@ -68,13 +59,6 @@ function Hadiah() {
 export default Hadiah
 
 const styles = {
-  rankPosition: {
-    marginLeft: '-90px',
-    position: 'relative',
-    left: '27.2%',
-    transform: 'translateX(-27.2%)',
-    marginTop: '20px'
-  },
   contentPosition: {
     marginTop: '50px'
   },

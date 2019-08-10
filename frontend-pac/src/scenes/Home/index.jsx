@@ -1,6 +1,6 @@
 import React from 'react'
 import { Section } from '../../components/'
-import { Grid, Header, Container, Button } from 'semantic-ui-react'
+import { Grid, Header, Button, Image, Container } from 'semantic-ui-react'
 import Zoom from 'react-reveal/Zoom'
 
 function Home() {
@@ -9,22 +9,21 @@ function Home() {
       bgImage={require('./architecture-city-classic-358612.jpg')}
       strength={200}
     >
-      <Container>
+      <Container style={styles.section}>
         <Zoom>
-          <Grid columns={2} style={styles.gridPosition}>
+          <Grid columns={2} relaxed="very" stackable>
             <Grid.Row>
               <Grid.Column>
-                <img
-                  src="http://pac.polinema.ac.id/img/phone.png"
-                  alt=""
-                  style={styles.image}
+                <Image
+                  src="http://www.agtindia.com/wp-content/uploads/2017/09/mobile-app-development.png"
+                  size="massive"
                 />
               </Grid.Column>
-              <Grid.Column style={styles.secondGrid}>
-                <Header size="huge" style={styles.headerText}>
+              <Grid.Column>
+                <Header size="huge" inverted>
                   Polinema Mobile Apps Competition
                 </Header>
-                <p style={styles.ContentText}>
+                <p style={styles.contentText}>
                   PAC diselenggarakan oleh Jurusan Teknologi Informasi
                   Politeknik Negeri Malang, sebagai wadah berkompetisi bagi
                   developer muda yang ingin berkreasi pada bidang pembuatan
@@ -38,7 +37,6 @@ function Home() {
                     as="a"
                     href="http://pac.polinema.ac.id/panel"
                   />
-                  <Button size="large" inverted content="TENTANG PAC" />
                 </div>
               </Grid.Column>
             </Grid.Row>
@@ -52,30 +50,12 @@ function Home() {
 export default Home
 
 const styles = {
-  image: {
-    width: '650px',
-    height: '700px',
-    left: '20%'
+  section: {
+    paddingTop: 100
   },
-  gridPosition: {
-    marginTop: '150px'
-  },
-  headerText: {
-    fontSize: '40px',
-    color: 'white',
-    marginLeft: '100px'
-  },
-  ContentText: {
-    marginTop: '0px',
+  contentText: {
     fontSize: '23px',
     color: 'white',
-    fontWeigth: '300',
-    marginLeft: '100px'
-  },
-  buttonPosition: {
-    margin: '40px 0px 0px 100px'
-  },
-  secondGrid: {
-    marginTop: '50px'
+    fontWeigth: '300'
   }
 }
